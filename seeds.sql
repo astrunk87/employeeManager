@@ -1,10 +1,10 @@
-INSERT INTO department(name)
+INSERT INTO department(id, name)
 -- pulled some of dummy data from hw assingment video
 VALUES 
-    ('sales'),
-    ('engineering'),
-    ('finance'),
-    ('legal');
+    (1, 'sales'),
+    (2, 'engineering'),
+    (3, 'finance'),
+    (4, 'legal');
 
 INSERT INTO role (id, title, department)
 VALUES  (01,'sales lead', 1),
@@ -16,15 +16,15 @@ VALUES  (01,'sales lead', 1),
         (04,'legal team lead', 4),
         (40,'lawyer', 4);
 
-INSERT INTO employee (first_name, last_name, role_id)
-VALUES  ('mike', 'carter', 10),
-        ('leah', 'smith', 01),
-        ('brent', 'walker', 02),
-        ('sam', 'kash', 20),
-        ('lee', 'trent', 30),
-        ('auden', 'rubio', 30),
-        ('travis', 'allen', 40),
-        ('dean', 'porter', 20),
-        ('rory', 'gilmore', 04),
-        ('dorothy', 'zbornak', 03);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES  ('mike', 'carter', 10, 01),
+        ('leah', 'smith', 01, NULL),
+        ('brent', 'walker', 02, NULL),
+        ('sam', 'kash', 20, 02),
+        ('lee', 'trent', 30, 03),
+        ('auden', 'rubio', 30, 03),
+        ('travis', 'allen', 40, 04),
+        ('dean', 'porter', 20, 02),
+        ('rory', 'gilmore', 04, NULL),
+        ('dorothy', 'zbornak', 03, NULL);
         

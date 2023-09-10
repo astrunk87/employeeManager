@@ -1,3 +1,10 @@
--- SELECT
---     employee.id AS name, role.title AS role_id from employee
---     JOIN role on employee.role_id = role.id 
+
+
+SELECT *
+from role
+JOIN department ON role.department = department.id;
+
+SELECT *
+FROM employee 
+JOIN role ON employee.role_id = role.id;
+
