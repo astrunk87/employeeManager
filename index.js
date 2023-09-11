@@ -24,7 +24,8 @@ const menu = [
             'add a department',
             'add a role',
             'add an employee',
-            'update an employee role'            
+            'update an employee role',
+            'exit employee database'            
         ],
     },
 ];
@@ -40,24 +41,30 @@ function start(){
         // 'add a role':add_a_role,
         // 'add an employee':add_an_employee,
         // 'update an employee role':update_an_employee_role
+        'exit employee database':exit_database
         };
         const selected_action = actions[data.action];
         selected_action();
-    })  
+    });  
 
-
+    function exit_database(){
+        db.end();
+        console.log("employee database closed");
+    };
 
     function view_all_departments(){
-        db.query('SELECT * FROM departments', function(err, results){
+        db.query('SELECT * FROM department', function(err, results){
+            if (err) throw err;
             console.table(results);
             start();
         });
     };
 
     function view_all_roles(){
-        db.query('SELECT * FROM roles', function(err, results){
+        db.query('SELECT * FROM role', function(err, results){
+            if (err) throw err;
             console.table(results);
-            start(); 
+            start();
         });
     };
 
