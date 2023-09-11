@@ -98,27 +98,33 @@ function start(){
 
 
         function add_a_role(){
-            // view_all_departments();
+            view_all_departments();
             inquirer.prompt([                
-                // {
-                //     type: 'input',
-                //     name: 'department',
-                //     message: 'refrenceing the departmenst list, which number department does the new role belong to?'
-                // },
+                {
+                    type: 'input',
+                    name: 'department',
+                    message: 'refrenceing the departmenst list, which number department does the new role belong to?'
+                },
                 {
                     type: 'input',
                     name: 'title',
                     message: 'what is the new role title?'
+                },
+                {
+                    type: 'input',
+                    name: 'salary',
+                    message: 'what is the salary for this role'
                 }
+
 
             ])
             .then((add_role)=> {
-            db.query(`INSERT INTO role (id, title, salary, department) 
-                        VALUES ('11, ${add_role.title}, 10, 2');
-                `);
-            // db.query(`INSERT INTO role (name) VALUES('${add_role.department}');`);                
-            //     console.log('role added')
-            //     view_all_roles();
+            db.query(`INSERT INTO role (title, salary, department) 
+                        VALUES ('${add_role.title}', '${add_role.salary}', '${add_role.department}');
+                `); 
+                // ^syntax error fixed with help during office hours
+           
+                view_all_roles();
                
             });
         };
