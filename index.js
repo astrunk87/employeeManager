@@ -25,7 +25,8 @@ const menu = [
             'add a role',
             'add an employee',
             'update an employee role',
-            'exit employee database'            
+            'exit employee database'        
+            // ^ idea for exit fuction from class mate greg 
         ],
     },
 ];
@@ -36,8 +37,8 @@ function start(){
         const actions = {
         'view all departments':view_all_departments,
         'view all roles':view_all_roles,
-        // 'view all employees':view_all_employees,
-        // 'add a department':add_a_department,
+        'view all employees':view_all_employees,
+        'add a department':add_a_department,
         // 'add a role':add_a_role,
         // 'add an employee':add_an_employee,
         // 'update an employee role':update_an_employee_role
@@ -67,6 +68,35 @@ function start(){
             start();
         });
     };
+
+    function view_all_employees(){
+        db.query('SELECT * FROM employee', function(err, results){
+            if (err) throw err;
+            console.table(results);
+            start();
+        });
+    }
+
+    function add_a_department(){
+        inquirer.prompt([
+            {
+                type: 'input',
+                name: 'department',
+                message: 'what is the new department name?'
+            }
+        ])
+        .then((add_dept)=> {
+        db.query(`INSERT INTO department (name) 
+                    VALUES ('${add_dept.department}');
+            `);
+            
+            console.log('dept added')
+            view_all_departments();
+           
+        });
+    };
+    
+    
 
 };
 
