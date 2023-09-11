@@ -39,9 +39,9 @@ function start(){
         'view all roles':view_all_roles,
         'view all employees':view_all_employees,
         'add a department':add_a_department,
-        // 'add a role':add_a_role,
-        // 'add an employee':add_an_employee,
-        // 'update an employee role':update_an_employee_role
+        'add a role':add_a_role,
+        'add an employee':add_an_employee,
+        // 'update an employee role':update_an_employee_role,
         'exit employee database':exit_database
         };
         const selected_action = actions[data.action];
@@ -57,7 +57,7 @@ function start(){
         db.query('SELECT * FROM department', function(err, results){
             if (err) throw err;
             console.table(results);
-            start();
+            // start();
         });
     };
 
@@ -95,6 +95,63 @@ function start(){
            
         });
     };
+
+
+        function add_a_role(){
+            // view_all_departments();
+            inquirer.prompt([                
+                // {
+                //     type: 'input',
+                //     name: 'department',
+                //     message: 'refrenceing the departmenst list, which number department does the new role belong to?'
+                // },
+                {
+                    type: 'input',
+                    name: 'title',
+                    message: 'what is the new role title?'
+                }
+
+            ])
+            .then((add_role)=> {
+            db.query(`INSERT INTO role (id, title, salary, department) 
+                        VALUES ('11, ${add_role.title}, 10, 2');
+                `);
+            // db.query(`INSERT INTO role (name) VALUES('${add_role.department}');`);                
+            //     console.log('role added')
+            //     view_all_roles();
+               
+            });
+        };
+        
+        
+
+            function add_an_employee(){
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'first_name',
+                    message: 'what is their first name?'
+                },
+                {
+                    type: 'input',
+                    name: 'last_name',
+                    message: "what is their last name?"
+                }
+
+            ])
+            .then((add_an_employee)=> {
+            db.query(`INSERT INTO employee (name) 
+                        VALUES ('${add_an_employee.first_name}');
+                `);                
+                console.log('employee added')
+                view_all_employees();
+               
+            });
+        };
+        
+        
+        
+        // update_an_employee_role
     
     
 
