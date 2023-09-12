@@ -41,7 +41,7 @@ function start(){
         'add a department':add_a_department,
         'add a role':add_a_role,
         'add an employee':add_an_employee,
-        // 'update an employee role':update_an_employee_role,
+        'update an employee role':update_an_employee_role,
         'exit employee database':exit_database
         };
         const selected_action = actions[data.action];
@@ -57,7 +57,7 @@ function start(){
         db.query('SELECT * FROM department', function(err, results){
             if (err) throw err;
             console.table(results);
-            // start();
+            start();
         });
     };
 
@@ -159,11 +159,33 @@ function start(){
                 view_all_employees();
                
             });
+        };       
+        
+        
+        function update_an_employee_role() {
+            inquirer.prompt ([
+                {
+                    type: 'input',
+                    name: 'employee_id',
+                    message: 'what is the employees id'
+                },
+                {
+                    type: 'input',
+                    name: 'new_role_id',
+                    message: 'what is their new roles id'
+                }
+
+            ])
+            .then((update_an_employee_role)=> {
+                db.query(`UPDATE employee
+                        SET role_id = ${update_an_employee_role.new_role_id}
+                        WHERE id = ${update_an_employee_role.employee_id};
+                    `);                
+                    console.log('employee role updated')
+                    view_all_employees();
+                   
+                });
         };
-        
-        
-        
-        // update_an_employee_role
     
     
 
