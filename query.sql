@@ -2,7 +2,7 @@
 
 SELECT *
 from role
-JOIN department ON role.department = department.id;
+JOIN department ON role.department_id = department.id;
 
 SELECT *
 FROM employee 

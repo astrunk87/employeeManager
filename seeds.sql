@@ -6,15 +6,15 @@ VALUES
     (3, 'finance'),
     (4, 'legal');
 
-INSERT INTO role (id, title, department)
-VALUES  (01,'sales lead', 1),
-        (10,'salesperson', 1),
-        (02,'lead engineer', 2),
-        (20,'software engineer', 2),
-        (03,'account manager', 3),
-        (30,'accountant', 3),
-        (04,'legal team lead', 4),
-        (40,'lawyer', 4);
+INSERT INTO role (id, title, salary, department_id)
+VALUES  (01,'sales lead', 100000, 1),
+        (10,'salesperson', 90000, 1),
+        (02,'lead engineer', 100000, 2),
+        (20,'software engineer', 90000, 2),
+        (03,'account manager', 100000, 3),
+        (30,'accountant', 90000, 3),
+        (04,'legal team lead', 100000, 4),
+        (40,'lawyer', 90000, 4);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES  ('mike', 'carter', 10, 01),

@@ -7,9 +7,9 @@ const db = mysql.createConnection(
         host: 'localhost',
         user: 'root',
         password: 'Noelle#35',
-        database: 'employees_db'
+        database: 'employee_db'
     },
-    console.log('connected to employees_db database')
+    console.log('connected to employee_db database')
 );
 
 const menu = [
@@ -115,21 +115,17 @@ function start(){
                     name: 'salary',
                     message: 'what is the salary for this role'
                 }
-
-
             ])
             .then((add_role)=> {
-            db.query(`INSERT INTO role (title, salary, department) 
-                        VALUES ('${add_role.title}', '${add_role.salary}', '${add_role.department}');
+            db.query(`INSERT INTO role (title, salary, department_id) 
+                        VALUES ('${add_role.title}', '${add_role.salary}', '${add_role.department_id}');
                 `); 
                 // ^syntax error fixed with help during office hours
            
                 view_all_roles();
                
             });
-        };
-        
-        
+        };       
 
             function add_an_employee(){
             inquirer.prompt([
@@ -142,12 +138,22 @@ function start(){
                     type: 'input',
                     name: 'last_name',
                     message: "what is their last name?"
+                },
+                {
+                    type: 'input',
+                    name: 'role_id',
+                    message: 'what is their role id'
+                },
+                {
+                    type: 'input',
+                    name: 'manager_id',
+                    message: 'what is their managers id? if they dont have a manager leave blank'
                 }
 
             ])
             .then((add_an_employee)=> {
-            db.query(`INSERT INTO employee (name) 
-                        VALUES ('${add_an_employee.first_name}');
+            db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) 
+                        VALUES ('${add_an_employee.first_name}', '${add_an_employee.last_name}', '${add_an_employee.role_id}', '${add_an_employee.manager_id}');
                 `);                
                 console.log('employee added')
                 view_all_employees();
