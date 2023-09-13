@@ -100,15 +100,10 @@ function start(){
 
 
         function add_a_role(){
-            // below with help from classmate greg
-            // db.query(
-            //     `SELECT * FROM department;
-            //     `, function(err, results){
-            // if (err) throw err;
-            // const departmentChoice = results.map(department =>({
-            //     name: department.name,
-            //     value: department.id
-            // }));
+            db.query('SELECT * FROM department;', function(err, results){
+                if (err) throw err;
+                console.table(results);
+                });
             inquirer.prompt([                
                 {
                     type: 'input',
