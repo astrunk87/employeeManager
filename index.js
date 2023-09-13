@@ -54,7 +54,7 @@ function start(){
     };
 
     function view_all_departments(){
-        db.query('SELECT * FROM department', function(err, results){
+        db.query('SELECT * FROM department;', function(err, results){
             if (err) throw err;
             console.table(results);
             start();
@@ -62,7 +62,9 @@ function start(){
     };
 
     function view_all_roles(){
-        db.query('SELECT *FROM role JOIN department ON role.department_id = department.id', function(err, results){
+        db.query(`SELECT role.title, role.id AS role_id, department.name AS department, role.salary 
+                FROM role
+                JOIN department ON role.department_id = department.id`, function(err, results){
             if (err) throw err;
             console.table(results);
             start();
