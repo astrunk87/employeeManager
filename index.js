@@ -72,7 +72,7 @@ function start(){
     };
 
     function view_all_employees(){
-        db.query(`SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id LEFT JOIN employee manager on manager.id = employee.manager_id`, function(err, results){
+        db.query(`SELECT employee.id AS employee_id,  employee.first_name, employee.last_name, role.id AS role_id, role.title, department.name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id LEFT JOIN employee manager on manager.id = employee.manager_id`, function(err, results){
             if (err) throw err;
             console.table(results);
             start();
@@ -100,12 +100,26 @@ function start(){
 
 
         function add_a_role(){
-            view_all_departments();
+            // below with help from classmate greg
+            // db.query(
+            //     `SELECT * FROM department;
+            //     `, function(err, results){
+            // if (err) throw err;
+            // const departmentChoice = results.map(department =>({
+            //     name: department.name,
+            //     value: department.id
+            // }));
             inquirer.prompt([                
                 {
                     type: 'input',
                     name: 'department',
-                    message: 'refrenceing the departmenst list, which number department does the new role belong to?'
+                    message: 'which number department does the new role belong to?',
+                    
+                },
+                {
+                    type:'input',
+                    name:'id',
+                    message: 'what is this roles id number?'
                 },
                 {
                     type: 'input',
@@ -119,8 +133,8 @@ function start(){
                 }
             ])
             .then((add_role)=> {
-            db.query(`INSERT INTO role (title, salary, department_id) 
-                        VALUES ('${add_role.title}', '${add_role.salary}', '${add_role.department_id}');
+            db.query(`INSERT INTO role (id, title, salary, department_id) 
+                        VALUES ('${add_role.id}', '${add_role.title}', '${add_role.salary}', '${add_role.department}');
                 `); 
                 // ^syntax error fixed with help during office hours
            
