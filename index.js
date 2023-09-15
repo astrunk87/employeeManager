@@ -2,11 +2,13 @@ const inquirer = require('inquirer');
 const mysql = require('mysql2');
 
 
+
+
 const db = mysql.createConnection(
     {
         host: 'localhost',
         user: 'root',
-        password: 'Noelle#35',
+        password: '',
         database: 'employee_db'
     },
     console.log('connected to employee_db database')
@@ -26,7 +28,7 @@ const menu = [
             'add an employee',
             'update an employee role',
             'exit employee database'        
-            // ^ idea for exit fuction from class mate greg 
+            // ^ idea for exit fuction from class mate greg stevenson
         ],
     },
 ];
@@ -108,7 +110,7 @@ function start(){
                 {
                     type: 'input',
                     name: 'department',
-                    message: 'which number department does the new role belong to?',
+                    message: 'refrencing the table, which number department does the new role belong to?',
                     
                 },
                 {
@@ -129,12 +131,12 @@ function start(){
             ])
             .then((add_role)=> {
             db.query(`INSERT INTO role (id, title, salary, department_id) 
-                        VALUES ('${add_role.id}', '${add_role.title}', '${add_role.salary}', '${add_role.department}');
-                `); 
+                        VALUES ('${add_role.id}', '${add_role.title}', '${add_role.salary}`, function(err, results){
+                            if (err) throw err; 
                 // ^syntax error fixed with help during office hours
            
                 view_all_roles();
-               
+                        });
             });
         };       
 
