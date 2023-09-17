@@ -34,6 +34,7 @@ const menu = [
   },
 ];
 
+// starts the program
 function start() {
   return inquirer.prompt(menu).then((data) => {
     const actions = {
@@ -53,6 +54,7 @@ function start() {
     selected_action();
   });
 
+//   exits the database, with help form class mate greg stevenson
   function exit_database() {
     db.end();
     console.log("employee database closed");
@@ -79,6 +81,7 @@ function start() {
     );
   }
 
+//   merge below was giving to the class by prof trey eckels
   function view_all_employees() {
     db.query(
       `SELECT employee.id AS employee_id,  employee.first_name, employee.last_name, role.id AS role_id, role.title, department.name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id LEFT JOIN employee manager on manager.id = employee.manager_id`,
@@ -144,7 +147,7 @@ function start() {
                         VALUES ('${add_role.id}', '${add_role.title}', '${add_role.salary}`,
           function (err, results) {
             if (err) throw err;
-            // ^syntax error fixed with help during office hours
+            // ^syntax error fixed with help during office hours from trey and nicolas
 
             view_all_roles();
           }
