@@ -22,6 +22,7 @@
 
 ## usage
   Once you have started up the program you will see the options of what you can do in the database. To get to each option use the up and down arrow keys. Not everything is shown on the menu so keep scrolling to see every option. Press enter to selection that option. If you choose to see a table it will generate that table. If you chose to update or delete something it will ask you a couple questions and once you have answered them it will then show you the updated table. Below is a video walkthrough of the program.
+  
 [employee database video walkthrough](https://github.com/astrunk87/employeeManager/assets/134554632/e20e520b-f626-45d7-8001-0cc8f18b7726)
 
 
