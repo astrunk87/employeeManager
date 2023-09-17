@@ -144,14 +144,14 @@ function start() {
       .then((add_role) => {
         db.query(
           `INSERT INTO role (id, title, salary, department_id) 
-                        VALUES ('${add_role.id}', '${add_role.title}', '${add_role.salary}`,
-          function (err, results) {
-            if (err) throw err;
+                        VALUES ('${add_role.id}', '${add_role.title}', '${add_role.salary}', '${add_role.department}');
+                        `);
+                console.log("role added"); 
+        
             // ^syntax error fixed with help during office hours from trey and nicolas
 
             view_all_roles();
-          }
-        );
+                  
       });
   }
 
