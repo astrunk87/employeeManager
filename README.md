@@ -21,7 +21,9 @@
   To install this program you will need to bring over the files and do an npm install. Once that is done, enter node index.js in the command line and it will start the program, which will guide you from there.
 
 ## usage
-  Once you have started up the program you will see the options of what you can do in the database. To get to each option use the up and down arrow keys. Not everything is shown on the menu so keep scrolling to see every option. Press enter to selection that option. If you choose to see a table it will generate that table. If you chose to update or delete something it will ask you a couple questions and once you have answered them it will then show you the updated table. 
+  Once you have started up the program you will see the options of what you can do in the database. To get to each option use the up and down arrow keys. Not everything is shown on the menu so keep scrolling to see every option. Press enter to selection that option. If you choose to see a table it will generate that table. If you chose to update or delete something it will ask you a couple questions and once you have answered them it will then show you the updated table. Below is a video walkthrough of the program.
+  <../Downloads/employee database.webm>
+  <../Downloads/employee database.webm>
 
 ## License
   Licensed under the [MIT](https://choosealicense.com/licenses/mit/) license 
